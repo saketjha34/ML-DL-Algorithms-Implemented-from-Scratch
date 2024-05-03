@@ -63,5 +63,6 @@ class SGDRegressor:
 
     def __str__(self):
         return self.__repr__()
+    
     def get_model_weights_bias(self):
         return self.weights,self.bias
