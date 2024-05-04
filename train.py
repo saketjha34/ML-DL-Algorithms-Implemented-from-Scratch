@@ -1,15 +1,16 @@
-from StochasticGradientDescentRegressor import SGDRegressor
 import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn import datasets
+import matplotlib.pyplot as plt
+from StochasticGradientDescentClassifier import SGDClassifier
 
-w = np.array([2,4])
-b = 2
-model = SGDRegressor()
+bc = datasets.load_breast_cancer()
+X, y = bc.data, bc.target
 
-X = np.random.randn(100, 2)
-y = np.dot(X,w) + b
+model = SGDClassifier(epochs=1000)
 model.fit(X,y)
-
-test_preds = model.predict(np.array([1,3]))
-print(test_preds)
-print(model.get_model_weights_bias())
-print(model.__str__())
+pred = model.predict(X)
+print(pred[:10])
+print(y[:10])
+pred_proba = model.predict_proba(X)
+print(pred_proba[:10])

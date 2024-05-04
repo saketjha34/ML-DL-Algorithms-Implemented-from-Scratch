@@ -59,10 +59,11 @@ class SGDRegressor:
         return "Model Trained"
     
     def __repr__(self) -> str:
-        return f'SGDRegressor(learning_rate = {self.learning_rate} ,tolerance = {self.tolerance} ,batch_size = {self.batch_size} ,epochs =  {self.epochs})'
+        return f'SGDRegressor(learning_rate = {self.learning_rate} ,tolerance = {self.tolerance} ,batch_size = {self.batch_size} ,epochs = {self.epochs})'
 
     def __str__(self):
         return self.__repr__()
     
     def get_model_weights_bias(self):
         return self.weights,self.bias
+    
