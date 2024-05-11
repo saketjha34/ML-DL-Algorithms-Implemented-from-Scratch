@@ -2,11 +2,12 @@ import numpy as np
 
 class SGDRegressor:
     
-    def __init__(self, learning_rate=0.01, epochs=1000, batch_size=32, tol=1e-3):
+    def __init__(self, learning_rate=0.01, epochs=1000, batch_size=32, tol=1e-3 , verbose = False):
         self.learning_rate = learning_rate
         self.epochs = epochs
         self.batch_size = batch_size
         self.tolerance = tol
+        self.verbose = verbose
         self.weights = None
         self.bias = None
 
@@ -50,8 +51,10 @@ class SGDRegressor:
             if epoch % 10 == 0:
                 y_pred = self.predict(X)
                 loss = self.mean_squared_error(y, y_pred)
-                print(f"Epoch: {epoch} | MAE Train Loss: {loss} current Weight -> {self.weights} ,current bias -> {self.bias} ")
-
+                if self.verbose == True:
+                    print(f"Epoch: {epoch} | MAE Train Loss: {loss} current Weight -> {self.weights} ,current bias -> {self.bias} ")
+                else:
+                    continue
             if np.linalg.norm(gradient_weights) < self.tolerance:
                 print("Convergence reached.")
                 break
