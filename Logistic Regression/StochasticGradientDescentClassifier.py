@@ -2,14 +2,15 @@ import numpy as np
 
 class SGDClassifier():
 
-    def __init__(self,type = 'binary',learning_rate= 0.01,epochs=1000,batch_size=32,tol = 1e-3) -> None:
+    def __init__(self,verbose =False,learning_rate= 0.01,epochs=1000,batch_size=32) -> None:
         self.learning_rate = learning_rate
         self.epochs = epochs
         self.batch_size = batch_size
-        self.tolerance = tol
+
+        self.verbose = verbose
         self.weights = None
         self.bias = None
-        self.type = type
+
 
     def sigmoid(self,x):
         return 1/(1+ np.exp(-x))
@@ -52,12 +53,9 @@ class SGDClassifier():
 
             if epoch % 100 == 0:
                 y_pred = self.predict(X)
-    
-                print(f"Epoch: {epoch} | Train Accuracy : {self.accuracy(y,y_pred)}  ")
+                if not self.verbose:
+                    print(f"Epoch: {epoch} | Train Accuracy : {self.accuracy(y,y_pred)}  ")
 
-            if np.linalg.norm(gradient_weights) < self.tolerance:
-                print("Convergence reached.")
-                break
 
         return "Model Trained"
     

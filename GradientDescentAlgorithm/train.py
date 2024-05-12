@@ -1,16 +1,17 @@
 import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn import datasets
-import matplotlib.pyplot as plt
-from StochasticGradientDescentClassifier import SGDClassifier
 
-bc = datasets.load_breast_cancer()
-X, y = bc.data, bc.target
+from GradientDescentAlgorithim import GradientDescent
+# Known Weights and bias
+w = np.array([2,4])
+b = 2
 
-model = SGDClassifier(epochs=1000)
-model.fit(X,y)
-pred = model.predict(X)
-print(pred[:10])
-print(y[:10])
-pred_proba = model.predict_proba(X)
-print(pred_proba[:10])
+# Dataset
+X = np.random.randn(100, 2)
+y = np.dot(X,w) + b
+
+
+tol = 1e-3
+epochs = 900
+learning_rate = 0.001
+
+GradientDescent(X,y,epochs,learning_rate,tol)
