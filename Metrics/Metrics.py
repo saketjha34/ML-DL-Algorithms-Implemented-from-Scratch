@@ -1,8 +1,6 @@
 import numpy as np
 
-
-
-def root_mean_squared_error(y_true, y_pred):
+def root_mean_squared_error(y_true , y_pred):
     return np.sqrt(np.mean(y_true - y_pred)**2)
 
 def mean_squared_error(y_true, y_pred):
@@ -30,3 +28,21 @@ def r_2_score(y_true, y_pred):
 
 def max_error(y_true , y_pred):
     return np.max(np.abs(y_true - y_pred))
+
+def sigmoid(x):
+    return 1/(1+np.exp(-x))
+
+def softmax(x):
+    return np.exp(x)/np.sum(np.exp(x))
+
+def accuracy_score(y_true , y_pred):
+    return np.sum(y_pred==y_true)/len(y_true)
+
+def precision_score(y_true , y_pred):
+    return 
+
+y_true = np.array([1,0,1,0,1])
+y_pred = np.array([0,0,1,0,1])
+print(accuracy_score(y_pred=y_pred,y_true=y_true))
+
+
