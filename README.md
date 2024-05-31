@@ -87,7 +87,7 @@ To set up the project, clone the repository and ensure you have the required Pyt
 ```bash
 git clone https://github.com/saketjha34/ML-DL-Algorithms-Implemented-from-Scratch.git
 cd ML-DL-Algorithms-Implemented-from-Scratch
-pip install -r requirements.txt  # Create a requirements.txt if dependencies are needed
+pip install -r requirements.txt  
 ```
 
 ## Usage
